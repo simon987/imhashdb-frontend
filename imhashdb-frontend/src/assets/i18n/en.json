@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "title": "imhashdb",
+    "lang_select": "Language",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "index": {
+    "title": "imhashdb",
+    "subtitle": "Image hash database"
+  },
+  "about": {
+    "title": "About imhashdb",
+    "subtitle": ""
+  }
+}

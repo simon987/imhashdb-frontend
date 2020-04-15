@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+
+  <div class="large-nav">
+    <button mat-button [class.mat-active]="router.url === '/'" class="nav-title"
+            [routerLink]="''">{{"nav.title" | translate}}</button>
+    <button mat-button [class.mat-active]="router.url === '/about'" class="nav-link"
+            [routerLink]="'about'">{{"nav.about" | translate}}</button>
+    <button mat-button [class.mat-active]="router.url === '/about'" class="nav-link"
+            [routerLink]="'contact'">{{"nav.contact" | translate}}</button>
+  </div>
+  <div class="small-nav">
+    <button mat-button [matMenuTriggerFor]="smallNav">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #smallNav>
+      <button mat-menu-item [class.mat-active]="router.url === '/'" class="nav-title"
+              [routerLink]="''">{{"nav.title" | translate}}</button>
+      <button mat-button [class.mat-active]="router.url === '/about'" class="nav-link"
+              [routerLink]="'about'">{{"nav.about" | translate}}</button>
+      <button mat-button [class.mat-active]="router.url === '/about'" class="nav-link"
+              [routerLink]="'contact'">{{"nav.contact" | translate}}</button>
+    </mat-menu>
+  </div>
+
+  <span class="spacer"></span>
+
+  <!-- Lang select-->
+  <button mat-button [matMenuTriggerFor]="langMenu">
+    <mat-icon>language</mat-icon>
+    {{"nav.lang_select" | translate}}
+    <mat-icon>arrow_drop_down</mat-icon>
+  </button>
+  <mat-menu #langMenu>
+    <button mat-menu-item *ngFor="let lang of langList" (click)="langChange(lang)">
+      {{lang.display}}
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

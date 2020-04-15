@@ -1,0 +1,82 @@
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: #303030;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+        margin-top: 25px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1440px;
+    }
+}
+
+@media (min-width: 2200px) {
+    .container {
+        max-width: 2000px;
+    }
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-suffix {
+  margin: auto;
+}
+
+.mat-card .mat-divider-horizontal {
+  position: inherit !important;
+}
+
+.mat-dialog-container {
+  height: unset !important;
+}
+
+.muted {
+  opacity: 0.7;
+  font-size: 80%;
+}
+
+.mat-list-text, .mat-line {
+  overflow: unset !important;
+}
+@media (max-width: 576px) {
+  .mat-expansion-panel-body {
+    padding: 0 !important;
+  }
+
+  figure {
+    margin: 0 !important;
+  }
+}

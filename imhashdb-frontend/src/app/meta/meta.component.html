@@ -1,0 +1,12 @@
+<mat-list-item>
+  <p matLine>
+    <code>{{meta["meta"]["id"]}}</code>&nbsp;
+  </p>
+  <p class="muted" matLine [title]='formatTsTitle(meta["meta"]["retrieved_at"])'>
+    Fetched {{formatTs(meta["meta"]["retrieved_at"])}}
+  </p>
+  <div matLine>
+    <a mat-raised-button color="primary" [href]='meta["url"]' target="_blank"><mat-icon>image</mat-icon>&nbsp;URL</a>
+    <button mat-raised-button color="primary" (click)="openDialog()"><mat-icon>info</mat-icon>&nbsp;Metadata</button>
+  </div>
+</mat-list-item>

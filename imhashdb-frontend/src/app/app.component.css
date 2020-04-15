@@ -1,0 +1,13 @@
+.large-nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .large-nav {
+    display: initial;
+  }
+
+  .small-nav {
+    display: none;
+  }
+}

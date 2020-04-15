@@ -1,0 +1,86 @@
+<mat-card>
+  <mat-card-title>{{"about.title" | translate}}</mat-card-title>
+  <mat-card-subtitle>{{"about.subtitle" | translate}}</mat-card-subtitle>
+
+  <mat-card-content>
+
+    <h2>Perceptual hashing</h2>
+
+    <app-git-repo name="fastimagehash (C/C++)" path="simon987/fastimagehash"></app-git-repo>
+    <app-git-repo name="fastimagehash-go (C/go)" path="simon987/fastimagehash-go"></app-git-repo>
+
+    <figure>
+      <img src="assets/dhash.png">
+      <figcaption>Difference hash (dhash)</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/mhash.png">
+      <figcaption>Median hash (mhash)</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/phash.png">
+      <figcaption>phash</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/whash.png">
+      <figcaption>Wavelet hash (whash)</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/phash_large.png">
+      <figcaption>fastimagehash vs imagehash performance comparison (phash)</figcaption>
+    </figure>
+
+    <h2>Hash query in PostgreSQL</h2>
+
+    <app-git-repo name="pg_hamming (C)" path="simon987/imhashdb"></app-git-repo>
+
+    <p>
+      To check how similar two images hashes are, we need to compute the
+      Hamming distance (or Hamming weight),
+      which is the number of bits that are different in each hash.
+    </p>
+
+    <p>
+      For a 64-bit hash, an hamming distance of 0 indicates a very strong match, while values higher
+      than 10 usually suggests that the images are significantly different.
+    </p>
+
+    <p>
+      On a processor with the POPCNT instruction (SSE4), one can calculate the Hamming distance in
+      four instructions per 64-bit chunk. The domain-specific PostgreSQL module used in
+      this project does not have any boundary checking or loops, and is essentially as fast
+      as a typical sequential scan.
+    </p>
+
+    <pre><code>hash1 = 10110110
+hash2 = 10010101
+
+mov     rax, [hash1]
+xor     rax, [hash2]  ; rax = hash1 XOR hash2 = 00100011
+popcnt  rax, rax      ; rax = popcount(00100011) = 3</code></pre>
+
+    <h2>Project overview</h2>
+
+
+    <app-git-repo name="imhashdb (go)" path="simon987/imhashdb"></app-git-repo>
+    <app-git-repo name="imhashdb-frontend (Angular)" path="simon987/imhashdb-frontend"></app-git-repo>
+
+    <figure>
+      <img src="assets/schema.png">
+      <figcaption>Database schema (some hashes omitted)</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/diagram.png">
+      <figcaption>High level overview</figcaption>
+    </figure>
+
+    <app-git-repo name="reddit_feed (Python)" path="simon987/reddit_feed"></app-git-repo>
+    <app-git-repo name="chan_feed (Python)" path="simon987/chan_feed"></app-git-repo>
+
+  </mat-card-content>
+</mat-card>

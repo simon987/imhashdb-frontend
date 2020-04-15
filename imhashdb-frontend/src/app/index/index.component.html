@@ -1,0 +1,25 @@
+<input id="upload" type="file" style="display: none"/>
+
+<mat-card>
+  <mat-card-title>{{"index.title" | translate}}</mat-card-title>
+  <mat-card-subtitle>{{"index.subtitle" | translate}}</mat-card-subtitle>
+
+  <mat-card-content>
+
+    <ng-template matStepLabel>Upload image</ng-template>
+
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Upload</mat-label>
+      <input matInput placeholder="https://example.com/image.jpeg">
+      <button mat-icon-button matSuffix (click)="onUpload()">
+        <mat-icon>cloud_upload</mat-icon>
+      </button>
+      <mat-hint>Enter direct image URL or upload from your computer</mat-hint>
+    </mat-form-field>
+
+    <app-search-settings (changed)="onSettingsChanged()"></app-search-settings>
+
+  </mat-card-content>
+</mat-card>
+
+<search-result [show]="showResult" [progress]="progress" [query]="this.query"></search-result>

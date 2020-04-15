@@ -1,0 +1,28 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>Search options</mat-panel-title>
+    <mat-panel-description></mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-list>
+    <mat-list-item *ngFor="let hash of settings.hashes">
+
+      <div matLine>
+        <span class="hash-name" i>{{hash.name}}</span>
+        <mat-button-toggle-group [title]="'Hash resolution'"
+                                 (change)="toggleChange(hash.name,$event)" multiple>
+
+          <ng-template ngFor let-res [ngForOf]='hash.resolution' let-i="index">
+            <mat-button-toggle [value]="res.id">{{res.name}}</mat-button-toggle>
+          </ng-template>
+        </mat-button-toggle-group>
+
+        <mat-slider [title]="'Maximum distance'" *ngIf="selectedResolution[hash.name]" thumbLabel
+                    min="0" [max]='selectedResolution[hash.name].max_distance'
+                    step="1" value="0"></mat-slider>
+      </div>
+
+      <p matLine class="muted">{{hash.description}}</p>
+    </mat-list-item>
+
+  </mat-list>
+</mat-expansion-panel>

@@ -1,0 +1,39 @@
+<div style="margin-top: 2em" *ngIf="show">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let im of queryResult"
+                         (opened)="onPanelOpen(im)"
+                         (closed)="onPanelClose(im)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <img class="thumbnail" *ngIf='!panelState[im["sha1"]]'
+               [src]='imageUrls(im)[0]' [srcset]='imageUrls(im).join(", ")'>
+          <span style="align-self: center">
+          <code>{{im.sha1}}</code> &nbsp; <span class="muted">{{formatSize(im)}}</span>
+          </span>
+        </mat-panel-title>
+        <mat-panel-description style="align-self: center">
+          <mat-chip-list>
+            <mat-chip *ngFor='let meta of metaChipList(im)'
+                      [style.background-color]="metaBackgroundColor(meta)"
+                      [style.color]="metaColor(meta)"
+                      [title]="metaDescription(meta)"
+            >{{shortMetaName(meta)}}</mat-chip>
+          </mat-chip-list>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="fullsize-wrapper">
+        <img class="fullsize" *ngIf='panelState[im["sha1"]]'
+             [src]='imageUrls(im)[0]' [srcset]='imageUrls(im).join(", ")'>
+      </div>
+
+      <mat-list>
+        <ng-template ngFor let-meta [ngForOf]='im["meta"]' let-i="index">
+          <app-meta [meta]="meta"></app-meta>
+          <mat-divider *ngIf='i != (im["meta"].length - 1)'></mat-divider>
+        </ng-template>
+      </mat-list>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

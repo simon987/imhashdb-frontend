@@ -1,0 +1,52 @@
+.mat-expansion-panel-header-description {
+  flex-grow: 0;
+}
+
+.mat-expansion-panel-header {
+  height: 80px !important;
+}
+
+.thumbnail {
+  border-radius: 3px;
+
+  width: 64px;
+  max-height: 64px;
+  float: left;
+
+  padding-right: 1em;
+  object-fit: cover;
+}
+
+.fullsize-wrapper {
+  text-align: center;
+}
+
+.fullsize {
+  max-height: 350px;
+  max-width: 100%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.mat-chip-list {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+  .mat-chip-list {
+    display: inherit;
+  }
+}
+
+.mat-card {
+  padding: 0;
+}
+
+@media (min-width: 576px) {
+  .mat-card {
+    padding: 16px;
+  }
+}
+

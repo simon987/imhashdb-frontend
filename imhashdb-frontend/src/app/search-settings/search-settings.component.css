@@ -1,0 +1,29 @@
+.hash-name {
+  display: inline-block;
+  width: 4em;
+}
+
+.mat-list-item {
+  margin-bottom: 1em;
+}
+
+.mat-button-toggle-group {
+  margin-bottom: 0.5em;
+  margin-right: 0.8em;
+}
+
+.mat-expansion-panel {
+  margin-top: 1em;
+}
+
+@media (max-width: 576px) {
+  .mat-expansion-panel {
+    margin-left: -16px;
+    margin-right: -16px;
+    margin-bottom: -16px;
+  }
+  .mat-expansion-panel-body {
+    padding: 0 !important;
+  }
+}
+
