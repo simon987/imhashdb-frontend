@@ -9,7 +9,7 @@ import * as _ from "lodash";
 export class ApiService {
 
   // public url: string = window.location.protocol + "//" + window.location.host + "/api";
-  public url: string = window.location.protocol + "//" + "192.168.1.57:8080" + "/api";
+  public url: string = window.location.protocol + "//" + "127.0.0.1:8080" + "/api";
 
   private options: {
     withCredentials: true,
@@ -20,8 +20,7 @@ export class ApiService {
   }
 
   hash(data: string) {
-    return from([JSON.parse('{"dhash8":{"size":8,"bytes":"1UOImJyelpY="},"dhash16":{"size":16,"bytes":"smB5M+MVSlZFZslmklOiU+Bj7GC4YW1naUNZ4yznWdc="},"dhash32":{"size":32,"bytes":"bV2VGElVixyjD48XxTSXB4ftshcdZpIT2XWeG0lomhtVNBSdNXS+HMfxtBiBoT0YReYlmZLAH7sQyy+7DJgOuQO4Dr2CeUudEHkoPHBdRDyE7kc8wq8mPuI+fT7ibDc6pWoLOlVUX3qXYU94zSKfuGlWNrqTnGW6k2VX+ZKTpnk="},"mhash8":{"size":8,"bytes":"v38/MzA4oIA="},"mhash16":{"size":16,"bytes":"/0f3d/53/1b/R78HPwcFD4AOgQ/gA8APAM4AzADKAMY="},"mhash32":{"size":32,"bytes":"+v+/cb79P3Be/j5+vv8/Pj7vLz/63Tcf//94f///fPv//3sw//9/Mf/vvxD/j3kw/w5/AP8PfgB/gH8AEIB/IACAeCAAwH4gA8B/AAfQHyAB+A8ABdxvAAR4fwAMwP4ADgB+AAgAfOAEANjwEFW08IIoZPAEIc/wBAA88AQAKOA="},"phash8":{"size":8,"bytes":"24MnOBjPszE="},"phash16":{"size":16,"bytes":"2yKDsCdsOE4Y/M+o8wkxZ0iG45+ePUDbJPmbzQd7BHw="},"phash32":{"size":32,"bytes":"2yLmAIOwBTknbGTpOE5r5hj8uffPKM3E8wm9TTEnCXZIhp02458RH549IwZA24Y4JPg9mZvNOcEHe2bPBPzPGDDgB+3w49nO4eM282/gZMLPRpK9wD4uwgaf2zXPJGzLL+CTLgjMP5i0BRm2bBIz/E2T7ID/JPg9vBnyzfwZMIg="},"whash8haar":{"size":8,"bytes":"v38/MzA4oIA="},"whash16haar":{"size":16,"bytes":"/8f3d/53/3b/R78HPwcFD4AOgQ/gA8APAM4AzADOAMY="},"whash32haar":{"size":32,"bytes":"+v+/cb79P3Be/j5+vv8/Pj7vLz/63Tcf//94f///fPv//3sw//9/Mf/vvxD/j3kw/w5/AP8PfgB/gH8AEIB/IACAeCAAwH4gA8B/AAfQHyAB+A8ABdxvAAR4fwAMwP4ADgB+AAgAfOAEANjwEFW08IIoZPAEIc/wBAA88AQAKOA="}}')])
-    // return this.http.post(this.url + "/hash", {data: data}, this.options);
+    return this.http.post(this.url + "/hash", {data: data}, this.options);
   }
 
   query(hashType: string, hash: string, distance: number, limit: number, offset: number) {
@@ -39,7 +38,6 @@ export class ApiService {
           im["md5"] = this.b64.toHex(im["md5"])
           im["meta"].forEach(ihm => {
             ihm["url"] = "https://" + ihm["url"]
-            ihm["meta"]["meta"] = JSON.parse(atob(ihm["meta"]["meta"]))
             ihm["meta"]["retrieved_at"] *= 1000;
           });
         });
@@ -56,6 +54,11 @@ export class ApiService {
         "background": "#ff2e00",
         "foreground": "#EEEEEE",
         "description": "Reddit"
+      },
+      "4chan": {
+        "background": "#006500",
+        "foreground": "#EEEEEE",
+        "description": "4chan"
       },
       "imgur": {
         "background": "#1BB76E",

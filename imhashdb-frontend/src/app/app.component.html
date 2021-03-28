@@ -5,8 +5,6 @@
             [routerLink]="''">{{"nav.title" | translate}}</button>
     <button mat-button [class.mat-active]="router.url === '/about'" class="nav-link"
             [routerLink]="'about'">{{"nav.about" | translate}}</button>
-    <button mat-button [class.mat-active]="router.url === '/about'" class="nav-link"
-            [routerLink]="'contact'">{{"nav.contact" | translate}}</button>
   </div>
   <div class="small-nav">
     <button mat-button [matMenuTriggerFor]="smallNav">
@@ -17,8 +15,6 @@
               [routerLink]="''">{{"nav.title" | translate}}</button>
       <button mat-button [class.mat-active]="router.url === '/about'" class="nav-link"
               [routerLink]="'about'">{{"nav.about" | translate}}</button>
-      <button mat-button [class.mat-active]="router.url === '/about'" class="nav-link"
-              [routerLink]="'contact'">{{"nav.contact" | translate}}</button>
     </mat-menu>
   </div>
 

@@ -83,20 +83,34 @@ export class SearchResultComponent implements OnInit, OnDestroy {
     return _.uniq(im["meta"].map(m => m["url"]))
   }
 
+  metaProject(meta) {
+    const tokens = meta["meta"]["id"].split(".");
+    if (tokens.length === 5) {
+      return tokens[1];
+    } else {
+      return tokens[0];
+    }
+  }
+
   metaColor(meta) {
-    return this.api.metaInfo()[meta["meta"]["id"].split(".")[0]]["foreground"]
+    return this.api.metaInfo()[this.metaProject(meta)]["foreground"]
   }
 
   metaBackgroundColor(meta) {
-    return this.api.metaInfo()[meta["meta"]["id"].split(".")[0]]["background"]
+    return this.api.metaInfo()[this.metaProject(meta)]["background"]
   }
 
   metaDescription(meta) {
-    return this.api.metaInfo()[meta["meta"]["id"].split(".")[0]]["description"]
+    return this.api.metaInfo()[this.metaProject(meta)]["description"]
   }
 
   shortMetaName(meta) {
-    return meta["meta"]["id"].split(".").slice(0, -1).join(".");
+    const tokens = meta["meta"]["id"].split(".");
+    if (tokens.length === 5) {
+      return tokens.slice(1, -1).join(".");
+    } else {
+      return tokens.slice(0, -1).join(".");
+    }
   }
 
   metaChipList(im) {

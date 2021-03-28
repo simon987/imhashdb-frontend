@@ -12,7 +12,6 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {IndexComponent} from './index/index.component';
-import {ContactComponent} from './contact/contact.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -43,7 +42,6 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     IndexComponent,
-    ContactComponent,
     SearchResultComponent,
     MetaComponent,
     MetaDialogComponent,

@@ -23,9 +23,9 @@ export class IndexComponent implements OnInit {
   }
 
   onUpload() {
-    this.query.emit("test")
-    this.showResult = true;
-    return;
+    // this.query.emit("test")
+    // this.showResult = true;
+    // return;
 
     const uploadElem = document.getElementById("upload") as HTMLInputElement;
     uploadElem.click()

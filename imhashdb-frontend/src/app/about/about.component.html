@@ -9,6 +9,13 @@
     <app-git-repo name="fastimagehash (C/C++)" path="simon987/fastimagehash"></app-git-repo>
     <app-git-repo name="fastimagehash-go (C/go)" path="simon987/fastimagehash-go"></app-git-repo>
 
+    <p>Perceptual hashing is a technique to compute the fingerprint of an image and save it as a 'hash'. The binary
+      hash is just a string of 1s and 0s and is much smaller than the original image. Adding a watermark, cropping,
+      changing
+      the colors or resizing a picture will generally only change its hash by a few bits.</p>
+
+    <p>Here are examples of well-known perceptual hashing functions, with different resolutions (8B, 32B and 128B):</p>
+
     <figure>
       <img src="assets/dhash.png">
       <figcaption>Difference hash (dhash)</figcaption>
@@ -63,21 +70,37 @@ mov     rax, [hash1]
 xor     rax, [hash2]  ; rax = hash1 XOR hash2 = 00100011
 popcnt  rax, rax      ; rax = popcount(00100011) = 3</code></pre>
 
-    <h2>Project overview</h2>
+    <figure>
+      <img src="assets/image_hash.png">
+      <figcaption>Image hashes stored in a SQL database</figcaption>
+    </figure>
 
+    <h2>Project overview</h2>
 
     <app-git-repo name="imhashdb (go)" path="simon987/imhashdb"></app-git-repo>
     <app-git-repo name="imhashdb-frontend (Angular)" path="simon987/imhashdb-frontend"></app-git-repo>
+
+    <p>
+      A number of Web crawler scripts send items to a message queue, then a 'hasher' daemon receives the items, fetches
+      the picture, computes the hashes for a dozen different hash configs. Then the metadata
+      is saved alongside the binary hashes in the PostgreSQL database.
+      The simple web app lets the user upload a picture and (asynchronously) query the whole
+      database.
+    </p>
+
+    <p>Below is an overview of the components involved in a single query.</p>
+
+    <figure>
+      <img src="assets/diagram.png">
+      <figcaption>High level overview</figcaption>
+    </figure>
 
     <figure>
       <img src="assets/schema.png">
       <figcaption>Database schema (some hashes omitted)</figcaption>
     </figure>
 
-    <figure>
-      <img src="assets/diagram.png">
-      <figcaption>High level overview</figcaption>
-    </figure>
+    <p>Examples of projects that can be used to scrape images in real time.</p>
 
     <app-git-repo name="reddit_feed (Python)" path="simon987/reddit_feed"></app-git-repo>
     <app-git-repo name="chan_feed (Python)" path="simon987/chan_feed"></app-git-repo>
